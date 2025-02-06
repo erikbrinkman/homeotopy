@@ -1,5 +1,9 @@
+import sys
 import tomllib
 from datetime import date
+from os import path
+
+sys.path.append(path.abspath(".."))
 
 with open("../pyproject.toml", "rb") as fh:
     toml = tomllib.load(fh)
@@ -11,7 +15,7 @@ extensions = [
     "myst_parser",
 ]
 
-pyproject = toml["tool"]["poetry"]
+pyproject = toml["project"]
 
 project = pyproject["name"]
 version = pyproject["version"]
