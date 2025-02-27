@@ -20,12 +20,16 @@ class Plane(Topology):
     """
 
     def to_inf_ball(self, points: NDArray[np.float64]) -> NDArray[np.float64]:
-        return np.tanh(points)
+        info = np.finfo(points.dtype)
+        # max and inf will both get promoted to 1
+        clipped = np.clip(points, info.min, info.max)
+        return clipped / (1 + np.abs(clipped))
 
     def from_inf_ball(self, points: NDArray[np.float64]) -> NDArray[np.float64]:
-        # -1 and 1 raise this warning but produce the correct result, we clip in case things are a little outside
+        clipped = np.clip(points, -1, 1)
+        # this triggers at -1 and 1
         with np.errstate(divide="ignore"):
-            return np.arctanh(np.clip(points, -1, 1))
+            return clipped / (1 - np.abs(clipped))
 
 
 @cache

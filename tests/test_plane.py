@@ -7,9 +7,9 @@ def test_known() -> None:
     plane = homeotopy.plane()
 
     plane_points = np.array(
-        [[0, 0, 0], [np.inf, np.inf, np.inf], [np.log(2), -np.log(3), np.log(4)]], "f8"
+        [[0, 0, 0], [np.inf, np.inf, -np.inf], [3, -5, 1 / 2]], "f8"
     )
-    inf_ball_points = np.array([[0, 0, 0], [1, 1, 1], [3 / 5, -4 / 5, 15 / 17]], "f8")
+    inf_ball_points = np.array([[0, 0, 0], [1, 1, -1], [3 / 4, -5 / 6, 1 / 3]], "f8")
     assert np.allclose(plane.to_inf_ball(plane_points), inf_ball_points)
     assert np.allclose(plane.from_inf_ball(inf_ball_points), plane_points)
 
