@@ -4,8 +4,6 @@
 [![pypi](https://img.shields.io/pypi/v/homeotopy)](https://pypi.org/project/homeotopy/)
 [![docs](https://img.shields.io/badge/api-docs-blue)](https://erikbrinkman.github.io/homeotopy)
 
-
-
 A python library for computing homeomorphisms between some common continuous
 spaces.
 
@@ -27,4 +25,12 @@ sphere_points = mapping(points)
 
 rev_mapping = reversed(mapping)
 duplicate_points = rev_mapping(sphere_points)
+```
+
+## Development
+
+```sh
+uv run pytest --cov
+uv run ruff format homeotopy/*.py tests/*.py
+uv run ruff check homeotopy/*.py tests/*.py
 ```
