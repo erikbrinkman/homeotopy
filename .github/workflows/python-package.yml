@@ -30,7 +30,7 @@ jobs:
           uv sync
       - name: Check with ruff
         run: |
-          uv run ruff check homeotopy/*.py
+          uv run ruff check homeotopy/*.py tests/*.py
       - name: Test with pytest
         run: |
           uv run pytest
