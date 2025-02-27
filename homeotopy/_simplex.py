@@ -41,7 +41,7 @@ class Simplex(Topology):
         cube_direc = simp_direc @ basis(d)[: d - 1].T
         icube_a = np.max(np.abs(cube_direc), -1) + tiny
 
-        return np.clip(cube_direc * (isimp_a / icube_a)[..., None], -1, 1)
+        return np.clip(cube_direc * (isimp_a / icube_a)[..., None], -1, 1)  # type: ignore
 
     def from_inf_ball(self, points: NDArray[np.float64]) -> NDArray[np.float64]:
         tiny = np.finfo(points.dtype).smallest_normal
@@ -53,7 +53,7 @@ class Simplex(Topology):
         isimp_a = (d + 1) * np.maximum(-simp_direc, simp_direc / d).max(-1) + tiny
 
         raw = simp_direc * (icube_a / isimp_a)[..., None] + np.full(d + 1, 1 / (d + 1))
-        return np.clip(raw, 0, 1)
+        return np.clip(raw, 0, 1)  # type: ignore
 
 
 @cache

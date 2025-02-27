@@ -33,4 +33,5 @@ duplicate_points = rev_mapping(sphere_points)
 uv run pytest --cov
 uv run ruff format homeotopy/*.py tests/*.py
 uv run ruff check homeotopy/*.py tests/*.py
+uv run mypy homeotopy
 ```
