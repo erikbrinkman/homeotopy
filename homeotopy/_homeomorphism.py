@@ -35,7 +35,7 @@ class Topology(ABC):
             in the open topology, but points can be mapped to the border for
             border points in the source topology.
         """
-        pass
+        ...  # pragma: no cover
 
     @abstractmethod
     def from_inf_ball(self, points: NDArray[np.float64]) -> NDArray[np.float64]:
@@ -53,7 +53,7 @@ class Topology(ABC):
         points : (..., d_out)
             A set of points in the topological space.
         """
-        pass
+        ...  # pragma: no cover
 
 
 @dataclass(frozen=True, slots=True)
@@ -61,7 +61,7 @@ class Homeomorphism:
     """A homeomorphism from source to target.
 
     Homeomorphisms can be called on points in the source domain to map them to
-    points in the target domain. They can also be `reversed` to create the
+    points in the target domain. They can also be `inverted` to create the
     inverse mapping.
 
 
@@ -72,7 +72,7 @@ class Homeomorphism:
         import numpy as np
 
         forward = homeomorphism(ball(1), simplex())
-        backward = reversed(forward)
+        backward = ~forward
 
         ball_points = ...
         simplex_points = forwad(ball_points)
@@ -83,7 +83,7 @@ class Homeomorphism:
     source: Topology
     target: Topology
 
-    def __reversed__(self) -> Homeomorphism:
+    def __invert__(self) -> Homeomorphism:
         return Homeomorphism(self.target, self.source)
 
     def __call__(self, points: NDArray[np.float64]) -> NDArray[np.float64]:

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from collections.abc import Iterable, Callable
+from collections.abc import Callable, Iterable
 from typing import Protocol
 
 class _Decorator(Protocol):

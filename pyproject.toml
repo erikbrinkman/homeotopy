@@ -1,10 +1,18 @@
 [project]
 name = "homeotopy"
 version = "0.3.0"
-description = "A library for computing homeomorphisms between some common stnandard topologie"
+description = "A library for computing homeomorphisms between some common standard topologies"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = ["numba>=0.61.0"]
+keywords = [
+    "homeomorphism",
+    "sphere",
+    "hypersphere",
+    "cube",
+    "hypercube",
+    "simplex",
+]
 
 [dependency-groups]
 dev = [
@@ -24,6 +32,15 @@ build-backend = "hatchling.build"
 [tool.mypy]
 mypy_path = "typings"
 strict = true
+
+[tool.ruff.lint]
+extend-select = ["I", "D", "A", "B", "W", "PL", "UP", "FIX"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-report term-missing"
 
 [tool.uv]
 keyring-provider = "subprocess"

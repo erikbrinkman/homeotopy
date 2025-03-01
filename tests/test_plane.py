@@ -1,9 +1,12 @@
+"""Test for projection to plane."""
+
 import numpy as np
 
 import homeotopy
 
 
 def test_known() -> None:
+    """Test projection of known points."""
     plane = homeotopy.plane()
 
     plane_points = np.array(
@@ -15,6 +18,7 @@ def test_known() -> None:
 
 
 def test_random() -> None:
+    """Test projecting random points satisfy invariants."""
     rng = np.random.default_rng(0)
     plane = homeotopy.plane()
 
