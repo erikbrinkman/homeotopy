@@ -1,9 +1,12 @@
+"""Tests for sphere projection."""
+
 import numpy as np
 
 import homeotopy
 
 
 def test_known() -> None:
+    """Test projecting some known points."""
     sphere = homeotopy.sphere()
 
     sphere_points = np.array([[1, 0, 0], [0, 1, 0], [1 / 2, 0, 3**0.5 / 2]], "f8")
@@ -13,6 +16,7 @@ def test_known() -> None:
 
 
 def test_random() -> None:
+    """Test that random projections follow invariants."""
     rng = np.random.default_rng(0)
     sphere = homeotopy.sphere()
 

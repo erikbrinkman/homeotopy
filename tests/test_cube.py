@@ -1,9 +1,12 @@
+"""Tests for cube projection."""
+
 import numpy as np
 
 import homeotopy
 
 
 def test_known() -> None:
+    """Test projecting known points."""
     cube = homeotopy.cube()
 
     cube_points = np.array([[0, 0, 0], [1, 1, 1], [0.5, 0.5, 0.5]], "f8")
@@ -13,6 +16,7 @@ def test_known() -> None:
 
 
 def test_random() -> None:
+    """Test projecting random points satisfy invariants."""
     rng = np.random.default_rng(0)
     cube = homeotopy.cube()
 

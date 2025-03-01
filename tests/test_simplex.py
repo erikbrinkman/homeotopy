@@ -1,9 +1,12 @@
+"""Tests for simplex projections."""
+
 import numpy as np
 
 import homeotopy
 
 
 def test_known() -> None:
+    """Test projecting known points."""
     simplex = homeotopy.simplex()
 
     simplex_points = np.array(
@@ -18,6 +21,7 @@ def test_known() -> None:
 
 
 def test_random() -> None:
+    """Test projecting random points satisfy invariants."""
     rng = np.random.default_rng(0)
     simplex = homeotopy.simplex()
 

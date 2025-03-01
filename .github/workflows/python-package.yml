@@ -28,8 +28,10 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install uv
           uv sync
+      - name: Check ruff format
+        run: uv run ruff format --check
       - name: Check with ruff
-        run: uv run ruff check homeotopy/*.py tests/*.py
+        run: uv run ruff check
       - name: Test with pytest
         run: uv run pytest
       - name: Run mypy

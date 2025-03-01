@@ -11,8 +11,8 @@ from ._homeomorphism import Topology
 
 
 @nb.jit(nb.float64[:, ::1](nb.int64), parallel=True, cache=True, nogil=True)
-def basis(dim: int) -> NDArray[np.float64]:
-    """Create a basis for rotating the simplex onto the origin of dim - 1"""
+def basis(dim: int) -> NDArray[np.float64]:  # pragma: no cover # can't trace numba
+    """Create a basis for rotating the simplex onto the origin of dim - 1."""
     res = np.empty((dim, dim))
     for i in nb.prange(0, dim - 1):
         num = i + 1
@@ -26,7 +26,7 @@ def basis(dim: int) -> NDArray[np.float64]:
 
 @dataclass(frozen=True, slots=True)
 class Simplex(Topology):
-    """The topology of the simplex
+    """The topology of the simplex.
 
     This represents all points in R^n s.t. 0 < x_i and Σx_i = 1.
     """
