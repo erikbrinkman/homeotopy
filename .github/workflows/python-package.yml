@@ -32,7 +32,7 @@ jobs:
         run: uv run ruff format --check
       - name: Check with ruff
         run: uv run ruff check
+      - name: Run pyright
+        run: uv run pyright
       - name: Test with pytest
         run: uv run pytest
-      - name: Run mypy
-        run: uv run mypy homeotopy
